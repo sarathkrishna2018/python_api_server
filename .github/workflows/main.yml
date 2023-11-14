@@ -1,0 +1,85 @@
+name: Python Flask CI/CD Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+
+  dockerize:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      run: |
+        docker build . --file Dockerfile --tag python-flask-api:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: dockerize
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Minikube
+      run: |
+        # Install Minikube
+        # curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        # chmod +x minikube
+        # sudo mv minikube /usr/local/bin/
+
+    - name: Start Minikube
+      run: |
+        # sudo minikube start --driver=none
+          echo "Minikube started"
+
+    - name: Set up Docker environment
+      run: |
+        # eval $(minikube docker-env)
+
+    - name: Build Docker image within Minikube
+      run: |
+        # docker build . --file Dockerfile --tag python-flask-api:latest
+
+    - name: Apply Kubernetes Manifests
+      run: |
+        # kubectl apply -f deployment.yaml
+        # kubectl apply -f service.yaml
+
+    - name: Check Deployment
+      run: |
+        # kubectl get deployments
+        # kubectl get services
+        
+    - name: Get Minikube IP
+      run: |
+        echo "Getting Minikube IP..."
+        # MINIKUBE_IP=$(sudo minikube ip)
+        echo "Minikube IP is: $MINIKUBE_IP"
+
+    - name: Get Service NodePort
+      run: |
+        echo "Getting Service NodePort..."
+        # NODE_PORT=$(kubectl get svc python-flask-api-service -o=jsonpath='{.spec.ports[0].nodePort}')
+        # echo "Service NodePort is: $NODE_PORT"
+
+    - name: Access Service URL
+      run: |
+        echo "The service can be accessed at http://$MINIKUBE_IP:$NODE_PORT"
+        # Actual URL access verification cannot be performed in GitHub Actions.
