@@ -7,7 +7,7 @@ route:
 receivers:
   - name: 'slack-notifications'
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/T1A2B3C4D/E5F6G7H8I/J9K1L2M3N4O5P6Q7R8S9T0U1V'
+      - api_url: '***REMOVED***'
         channel: '#alerts'
         send_resolved: true
 
