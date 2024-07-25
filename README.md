@@ -13,6 +13,7 @@ This project is a Python Flask-based API server designed for managing user data.
 - Minikube
 - kubectl
 - A GitHub account
+- Test
 
 ### Local Setup and Run
 

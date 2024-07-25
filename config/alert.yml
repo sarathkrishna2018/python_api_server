@@ -7,9 +7,14 @@ route:
 receivers:
   - name: 'slack-notifications'
     slack_configs:
-      - api_url: '***REMOVED***'
+      - api_url: 'https://hooks.slack.com/services/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'
         channel: '#alerts'
         send_resolved: true
+  - name: 'slack-notifications-2'
+  slack_configs:
+    - api_url: 'https://hooks.slack.com/services/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'
+      channel: '#alerts'
+      send_resolved: true
 
 inhibit_rules:
   - source_match:
