@@ -4,6 +4,6 @@
   "description": "A test project to trigger Dependabot updates",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^1.7.7"
   }
 }
