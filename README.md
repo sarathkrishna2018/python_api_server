@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Python Flask-based API server designed for managing user data. It includes a Dockerized setup for consistent deployment and is configured to run on a Minikube Kubernetes cluster. Additionally, a CI/CD pipeline using GitHub Actions is implemented for automated testing and deployment.
+This project is a Python Flask-based API server designed for managing user data.. It includes a Dockerized setup for consistent deployment and is configured to run on a Minikube Kubernetes cluster. Additionally, a CI/CD pipeline using GitHub Actions is implemented for automated testing and deployment.
 
 ## Getting Started
 
